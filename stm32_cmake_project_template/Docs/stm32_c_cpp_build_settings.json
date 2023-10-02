@@ -1,0 +1,133 @@
+{
+    "MCU settings": {
+        "Floating-point unit": {
+            "FPv4-SP-D16": "-mfpu=fpv4-sp-d16"
+        },
+        "Floating-point ABI": [
+            {
+                "Software implementation": "-mfloat-abi=soft"
+            },
+            {
+                "Mix HW/SW implementation": "-mfloat-abi=softfp"
+            },
+            {
+                "Hardware implementation": "-mfloat-abi=hard"
+            }
+        ],
+        "Instruction set": {
+            "Thumb2": "-mthumb"
+        },
+        "Runtime library": [
+            {
+                "Standard C,standard C++": ""
+            },
+            {
+                "Standard C,reduced C++": "--specs=standard_c_nano_cpp.specs"
+            },
+            {
+                "Reduced C,standard C++": "--specs=nano_c_standard_cpp.specs"
+            },
+            {
+                "Reduced C,reduced C++": "--specs=nano.specs"
+            }
+        ],
+        "Use float with printf from newlib-nano": "-u _printf_float",
+        "Use float with scanf from newlib-nano": "-u _scanf_float"
+    },
+    "MCU GCC Assembler": {
+        "Suppress Warnings": "-Wa,-W",
+        "Debug level": [
+            {
+                "Default": "g"
+            },
+            {
+                "Minimum": "-g1"
+            },
+            {
+                "Maximum": "-g3"
+            }
+        ],
+        "Define symbols": [
+            "-DDBUG"
+        ],
+        "Always preprocess assembler": "-x assembler-with-cpp"
+    },
+    "MCU GCC Compiler": {
+        "Debug level": [
+            {
+                "Default": "g"
+            },
+            {
+                "Minimum": "-g1"
+            },
+            {
+                "Maximum": "-g3"
+            }
+        ],
+        "Define symbols": [
+            "-DDBUG",
+            "-DUSE_HAL_DRIVER",
+            "-DSTM32F303xE"
+        ],
+        "Optimization level": [
+            {
+                "None": "-O0"
+            },
+            {
+                "Optimize": "-O1"
+            },
+            {
+                "Optimize more": "-O2"
+            },
+            {
+                "Optimize most": "-O3"
+            },
+            {
+                "Optimize for Debug": "-Og"
+            },
+            {
+                "Optimize for size": "-Os"
+            },
+            {
+                "Optimize for speed": "-Ofast"
+            }
+        ],
+        "Place functions in their own sections": "-ffunction-sections",
+        "Place data in their own sections": "-fdata-sections",
+        "Enable warnings about questionable constrctions": "-Wall",
+        "Enable stack usage analysis": "-fstack-usage",
+        "Cyclomatic Complexity": "-fcyclomatic-complexity"
+    },
+    "MCU G++ Compiler": {
+        "Debug level": [
+            {
+                "Default": "g"
+            },
+            {
+                "Minimum": "-g1"
+            },
+            {
+                "Maximum": "-g3"
+            }
+        ],
+        "Define symbols": [
+            "-DDBUG",
+            "-DUSE_HAL_DRIVER",
+            "-DSTM32F303xE"
+        ],
+        "Place functions in their own sections": "-ffunction-sections",
+        "Place data in their own sections": "-fdata-sections",
+        "Disable handling exceptions": "-fno-exceptions",
+        "Disable generation of information about every class with virtual functions": "-fno-rtti",
+        "Do not use __cxa_atexit for registering static destructors": "-fno-cxa-atexit"
+    },
+    "MCU G++ Linker": {
+        "Linker Script" : "-T${PROJECT-NAME}/STM32F303RETx_FLASH.ld",
+        "System calls" : {
+            "Minimal implementation":"-specs=nosys.specs"
+        },
+        "Generate map file" : "-Wl,-Map=",
+        "Discard unused sections": "-Wl,--gc-sections",
+        "Use C math library": "-Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group"
+    }
+}

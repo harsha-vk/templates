@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Inc",
+                "${workspaceFolder}/Inc/Main",
+                "${workspaceFolder}/Drivers/STM32F3xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F3xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F3xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F303xE"
+            ],
+            "compilerPath": "/opt/st/stm32cubeclt/GNU-tools-for-STM32/bin/arm-none-eabi-g++",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-gcc-arm",
+            "compilerArgs": []
+        }
+    ],
+    "version": 4
+}
