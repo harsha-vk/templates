@@ -1,0 +1,10 @@
+
+bldc_settings_menu/.settings/
+bldc_settings_menu/.vscode/
+bldc_settings_menu/Build/
+bldc_settings_menu/Debug/
+bldc_settings_menu/Release/
+bldc_settings_menu/.cproject
+bldc_settings_menu/.gitignore
+bldc_settings_menu/.project
+bldc_settings_menu/bldc_settings_menu.elf.launch
