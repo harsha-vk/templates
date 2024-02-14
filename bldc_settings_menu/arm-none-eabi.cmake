@@ -2,7 +2,7 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_SYSTEM_NAME Generic)
 
 # Point to toolchain path
-set(TOOLCHAIN_PREFIX arm-atollic-eabi-)
+set(TOOLCHAIN_PREFIX arm-none-eabi-)
 
 set(CMAKE_ASM_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)

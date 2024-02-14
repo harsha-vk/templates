@@ -15,38 +15,39 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 
-set(ASM_SOURCES startup/startup_stm32f302x8.s)
-set(C_SOURCES Src/main.c
-            Src/stm32f3xx_hal_msp.c
-            Src/stm32f3xx_it.c
-            Src/system_stm32f3xx.c
+set(ASM_SOURCES Core/Startup/startup_stm32f302r8tx.s)
+set(C_SOURCES Core/Src/main.c
+            Core/Src/stm32f3xx_hal_msp.c
+            Core/Src/stm32f3xx_it.c
+            Core/Src/syscalls.c
+            Core/Src/sysmem.c
+            Core/Src/system_stm32f3xx.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c
+            Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.c
-            Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.c
+            Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c
-            Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c
-            Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c
             Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c
 )
-set(CXX_SOURCES Src/Main/application.cpp)
+set(CXX_SOURCES Core/Src/Main/application.cpp)
 
 set(ASM_INCLUDES)
-set(C_INCLUDES ${CMAKE_SOURCE_DIR}/Inc
-            ${CMAKE_SOURCE_DIR}/Inc/Main
+set(C_INCLUDES ${CMAKE_SOURCE_DIR}/Core/Inc
+            ${CMAKE_SOURCE_DIR}/Core/Inc/Main
             ${CMAKE_SOURCE_DIR}/Drivers/STM32F3xx_HAL_Driver/Inc
             ${CMAKE_SOURCE_DIR}/Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
             ${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32F3xx/Include
             ${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Include
 )
-set(CXX_INCLUDES ${CMAKE_SOURCE_DIR}/Inc
-            ${CMAKE_SOURCE_DIR}/Inc/Main
+set(CXX_INCLUDES ${CMAKE_SOURCE_DIR}/Core/Inc
+            ${CMAKE_SOURCE_DIR}/Core/Inc/Main
             ${CMAKE_SOURCE_DIR}/Drivers/STM32F3xx_HAL_Driver/Inc
             ${CMAKE_SOURCE_DIR}/Drivers/STM32F3xx_HAL_Driver/Inc/Legacy
             ${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32F3xx/Include
@@ -115,7 +116,7 @@ target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${MCU_PARAMS}
                                                     $<$<COMPILE_LANGUAGE:CXX>:${CXX_FLAGS}>
 )
 target_link_options(${CMAKE_PROJECT_NAME} PRIVATE ${MCU_PARAMS}
-                                                    -T${CMAKE_CURRENT_SOURCE_DIR}/STM32F302R8_FLASH.ld
+                                                    -T${CMAKE_CURRENT_SOURCE_DIR}/STM32F302R8TX_FLASH.ld
                                                     --specs=nosys.specs
                                                     --specs=nano.specs
                                                     -Wl,-Map=${CMAKE_PROJECT_NAME}.map
