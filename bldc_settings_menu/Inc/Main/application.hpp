@@ -4,9 +4,9 @@
 #include "main.h"
 #include "stm32f3xx_hal.h"
 
-#define SHORT_MS 2000
-#define LONG_MS 4000
-#define NA_MS 8000
+#define SHORT_MS 1000
+#define LONG_MS 3000
+#define NA_MS 5000
 #define POS_CONST 5
 
 #ifdef __cplusplus
