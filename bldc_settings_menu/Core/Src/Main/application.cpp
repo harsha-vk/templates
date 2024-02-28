@@ -16,23 +16,23 @@ extern "C"
 
     void loop()
     {
-        if(!started && !HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
+        if((!started) && (!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)))
         {
             uint32_t millis = HAL_GetTick();
-            while (!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) && HAL_GetTick() - millis <= LONG_MS);
-            if (HAL_GetTick() - millis < SHORT_MS)
+            while ((!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) && (LONG_MS >= (HAL_GetTick() - millis)));
+            if (SHORT_MS > (HAL_GetTick() - millis))
             {
                 HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
                 started = true;
             }
-            else if (HAL_GetTick() - millis >= LONG_MS)
+            else if (LONG_MS <= (HAL_GetTick() - millis))
             {
                 LD2Blink(3);
                 HAL_Delay(200);
                 if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
                 {
                     millis = HAL_GetTick();
-                    while (HAL_GetTick() - millis < NA_MS)
+                    while (NA_MS > (HAL_GetTick() - millis))
                     {
                         if (!HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin))
                         {
